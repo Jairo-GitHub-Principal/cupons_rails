@@ -1,0 +1,18 @@
+<% if flash[:notice] %>
+  <p style="color: green"><%= flash[:notice] %></p>
+<% end %>
+
+<% if flash[:alert] %>
+  <p style="color: red"><%= flash[:alert] %></p>
+<% end %>
+
+
+<div class="cupom_links_container">
+<%= render @cupon %>
+
+
+      <%= link_to "Edit this cupon", edit_cupon_path(@cupon) %> 
+      <%= link_to "Back to cupons", cupons_path %>
+
+      <%= button_to "Destroy this cupon", @cupon, method: :delete %>
+</div>

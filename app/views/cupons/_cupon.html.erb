@@ -1,0 +1,38 @@
+
+<div class="cupom__container">
+ 
+    <div id="<%= dom_id cupon %>" class="card__container">
+      <p>
+        <%= cupon.description %>
+      </p>
+     
+       
+        <%= image_tag cupon.url_image, class:"image__container" %>
+
+
+      <p>
+        <strong>Cupom:</strong>
+        <%= cupon.code_id %>
+      </p>
+
+      <% if flash[:valido_id] == cupon.id %>
+  <% if flash[:valido] %>
+    <p style="color: green"><strong>Cupom válido ✅</strong></p>
+  <% else %>
+    <p style="color: red"><strong>Cupom expirado ❌</strong></p>
+  <% end %>
+<% else %>
+  <p>
+    <strong>Validade:</strong>
+    <%= cupon.validade %> Dias
+  </p>
+<% end %>
+
+  
+    <%= button_to "Validar Cupom", validar_cupon_path(cupon), method: :get, class: "btn btn-primary" %>
+
+    </div>
+    <p>
+      <%= link_to "Show this cupon", cupon %>
+    </p>
+</div>

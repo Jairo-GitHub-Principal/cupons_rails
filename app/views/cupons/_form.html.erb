@@ -1,0 +1,38 @@
+<%= form_with(model: cupon) do |form| %>
+  <% if cupon.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(cupon.errors.count, "error") %> prohibited this cupon from being saved:</h2>
+
+      <ul>
+        <% cupon.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div>
+    <%= form.label :url_image, style: "display: block" %>
+    <%= form.text_field :url_image %>
+  </div>
+
+  <div>
+    <%= form.label :code_id, style: "display: block" %>
+    <%= form.text_field :code_id %>
+  </div>
+
+  <div class="field">
+  <%= form.label :validade, "Validade (dias)" , style: "display: block" %>
+  <%= form.number_field :validade, min: 1 %>
+</div>
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

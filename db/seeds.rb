@@ -1,0 +1,32 @@
+spinner = TTY::Spinner.new("[:spinner] Cadastrando cupons...") #apos TTT spinner estiver instalado , esse codigo cria uma stancia do spinner, ele é usado para adicionar animação no console que ajuda a descrever a ação do codigo que esta sendo executado, nesse caso, iremos popular um DB
+    spinner.auto_spin # inidia a animação do spinner
+
+
+
+             cupons = [
+                {
+                    description:"10% de desconto",url_image:"https://st4.depositphotos.com/15585482/29237/v/450/depositphotos_292378982-stock-illustration-comic-lettering-10-percent-off.jpg",code_id:"0001"              
+                },
+                {
+                    description:"20% de desconto",url_image:"https://t4.ftcdn.net/jpg/03/98/03/81/360_F_398038155_jDcUStLpqmK73AnSIL7V2g7aF3pM1doa.jpg",code_id:"0002"                
+   
+                },
+                {
+                    description:"30% de desconto",url_image:"https://img.freepik.com/fotos-premium/30-por-cento-de-promocao_2227-146.jpg?semt=ais_hybrid&w=740",code_id:"0003"               
+                }
+            ]
+            
+            cupons.each do |cupon|
+                sleep(0.3)
+                Cupon.find_or_create_by!(cupon)
+            end    
+
+            
+
+           
+
+spinner.success("(Cadastro concluido)")
+
+
+
+ 

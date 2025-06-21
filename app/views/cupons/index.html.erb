@@ -1,0 +1,23 @@
+<div class="continer_index_cupons">
+    <% if flash[:notice] %>
+      <p style="color: green"><%= flash[:notice] %></p>
+    <% end %>
+
+   <% if flash[:alert] %>
+      <p style="color: red"><%= flash[:alert] %></p>
+    <% end %>
+
+    <h1>Cupons</h1>
+    <%= link_to "New cupon", new_cupon_path %>
+
+    <div id="cupons" class="show__cupons__container">
+      <% @cupons.each do |cupon| %>
+        <%= render cupon %>
+        
+
+
+        
+      <% end %>
+    </div>
+
+</div>

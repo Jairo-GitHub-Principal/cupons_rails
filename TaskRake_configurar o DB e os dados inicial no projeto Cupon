@@ -1,0 +1,59 @@
+Criar uma task para configurar o DB e os dados iniciails do projeto Cupon
+
+
+namespace :dev do
+  desc "Configura o ambiente de desenvolvimento"
+  task setup: :environment do
+           # %x(rails db:drop db:create db:migrate db:seed) # so faça isso em modo de desenvolvimento  # essa linha faria o processo de recriar o db tudo de uma vez
+
+      # so faça isso em modo de desenvolvimento
+      show_spinner("apagando DB","tarefa concluida") do
+        puts %x(rails db:drop)
+      end
+
+      show_spinner("Criando DB", "tarefa concluida") do
+        puts %x(rails db:create) 
+      end
+
+      show_spinner("executando migration", "tarefa concluida") do
+        puts %x(rails db:migrate) 
+      end
+
+      # como o codigo do yield aqui so tem uma linha, poderia ser escrito assim ficaria mais limpo "clean"
+      # ou seja as chaves pode substituir o "do end" quando o bloco de codigo passado so tiver uma linha
+
+      
+      show_spinner("Seeds populando DB", "tarefa concluida"){ puts %x(rails db:seed)}
+      
+
+      show_name("jairo"){puts "Hello peaple"}
+        
+  end
+
+  private
+
+  def show_spinner(msg_start,msg_end = "tarefa concluida")
+      spinner = TTY::Spinner.new("[:spinner] #{msg_start}")
+      spinner.auto_spin
+     
+      yield # aqui sera executado o comando task:db e o rake task seeds , obs onde o Yield estiver: define o local em uma ordem onde sera rodado um comando externo que entrara nessa funcção ao ser envolvido com o "do" exemplo função()do comando_externo end, assim envolvemos um comando externo pra rodar na posição e local marcado pelo yield
+      spinner.success("(#{msg_end})")
+
+  end
+
+  def show_name(nome)
+    yield
+    puts "meu nome é: #{nome} e eu criei esse programa"
+    
+  end 
+
+
+end
+
+
+
+# para rodar esse codigo contido nesse arquivo, tenho o projeto em off, e no terminal rode o seguinte comando:
+
+# rails dev:setup
+
+

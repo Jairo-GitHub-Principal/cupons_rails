@@ -1,0 +1,9 @@
+
+
+add um novo campo na tabela cupons, para fazer a validadção do tempo de validade do cupon
+
+
+Como criar uma migration standalone para add um novo campo na tabela cupons:
+
+rails generate migration AddValidadeToCupons validade:integer  # cria a migrate para add novo campo
+rails db:migrate # executa a nova migrate, adicionando o novo campo

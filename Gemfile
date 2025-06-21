@@ -14,6 +14,11 @@ gem "sprockets-rails"
 #gem "sqlite3", ">= 1.4"
 gem "pg"
 
+gem "sprockets", "~> 4.2" # corrigir erro no render
+gem "sprockets", "~> 4.2"
+gem "uglifier", ">= 1.3.0" # se usar uglifier para JS
+gem "terser"
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 

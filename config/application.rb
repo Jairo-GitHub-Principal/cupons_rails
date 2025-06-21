@@ -16,6 +16,14 @@ module Cupom
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w(assets tasks))
 
+    # ATENÇÃO: habilitar pipeline de assets (sprockets)
+    config.assets.enabled = true
+    config.assets.compile = true
+
+    config.assets.js_compressor = :uglifier
+    config.assets.js_compressor = :terser
+
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

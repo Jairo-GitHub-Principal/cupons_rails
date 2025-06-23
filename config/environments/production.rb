@@ -34,7 +34,7 @@ Rails.application.configure do
   config.assets.compress = true
 
   # Compressor JS e CSS
-  config.assets.js_compressor = Uglifier.new(harmony: true)
+  #config.assets.js_compressor = Uglifier.new(harmony: true)
   
   # config.assets.css_compressor = :sass
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.

@@ -1,6 +1,6 @@
 class Cupon < ApplicationRecord
-     attr_accessor :nova_data_de_criacao
-    def valido?
+     attr_accessor :nova_data_de_criacao 
+    def valido?  # esse metodo verifica se o cupom esta valido
        return false if validade.nil?
 
         horas_passadas = ((Time.current - created_at) / 1.hour).round # subtrai a data atual da data de criação, e arredonda para baixo ou para cima
@@ -8,9 +8,10 @@ class Cupon < ApplicationRecord
 
         horas_passadas <= horas_validade
         
+        
     end
 
-     def dias_restantes
+     def dias_restantes # esse metodo retorna quantos dias restam para o cupom expirar
         return 0 if validade.nil?
 
         horas_passadas = ((Time.current - created_at) / 1.hour).round

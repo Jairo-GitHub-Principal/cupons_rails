@@ -55,14 +55,14 @@ class CuponsController < ApplicationController
   def update
     respond_to do |format|
       if @cupon.update(cupon_params)
-        nova_data = params[:cupon][:nova_data_de_criacao]
-        if nova_data.present?
-          @cupon.update_column(:created_at, Date.parse(nova_data).beginning_of_day)
+        nova_data = params[:cupon][:nova_data_de_criacao] # pega a nova data de criação que atualizara a data de criação do cupon
+        if nova_data.present? # se a nova data estiver presente existir
+          @cupon.update_column(:created_at, Date.parse(nova_data).beginning_of_day) # converte a nova data para o formato de data do campo created_at da tabela  cupons
         end
 
         format.html { redirect_to @cupon, notice: "Cupon was successfully updated." }
         format.json { render :show, status: :ok, location: @cupon }
-        
+
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @cupon.errors, status: :unprocessable_entity }

@@ -28,8 +28,8 @@
       </p>
     <% end %>
 
-
-      <% if cupon.valido? %>
+       <%# o codigo abaixo mostra uma contagem regressiva dos diaas de validades dos cupons %> 
+      <% if cupon.valido? %> 
         <p style="color: green;">Válido por <strong><%= cupon.dias_restantes %></strong> dia(s)</p>
       <% else %>
         <p style="color: red;">Cupom expirado</p>

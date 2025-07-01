@@ -15,18 +15,29 @@
         <%= cupon.code_id %>
       </p>
 
-      <% if flash[:valido_id] == cupon.id %>
-  <% if flash[:valido] %>
-    <p style="color: green"><strong>Cupom válido ✅</strong></p>
-  <% else %>
-    <p style="color: red"><strong>Cupom expirado ❌</strong></p>
-  <% end %>
-<% else %>
-  <p>
-    <strong>Validade:</strong>
-    <%= cupon.validade %> Dias
-  </p>
-<% end %>
+    <% if flash[:valido_id] == cupon.id %>
+      <% if flash[:valido] %>
+        <p style="color: green"><strong>Cupom válido ✅</strong></p>
+      <% else %>
+        <p style="color: red"><strong>Cupom expirado ❌</strong></p>
+      <% end %>
+    <% else %>
+      <p>
+        <strong>Validade:</strong>
+        <%= cupon.validade %> Dias
+      </p>
+    <% end %>
+
+
+      <% if cupon.valido? %>
+        <p style="color: green;">Válido por <strong><%= cupon.dias_restantes %></strong> dia(s)</p>
+      <% else %>
+        <p style="color: red;">Cupom expirado</p>
+      <% end %>
+
+
+
+
 
   
     <%= button_to "Validar Cupom", validar_cupon_path(cupon), method: :get, class: "btn btn-primary" %>

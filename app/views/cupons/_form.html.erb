@@ -27,9 +27,18 @@
   </div>
 
   <div class="field">
-  <%= form.label :validade, "Validade (dias)" , style: "display: block" %>
-  <%= form.number_field :validade, min: 1 %>
-</div>
+    <%= form.label :validade, "Validade (dias)" , style: "display: block" %>
+    <%= form.number_field :validade, min: 1 %>
+  </div>
+
+  <% if form.object.persisted? %>
+    <div class="field">
+      <%= form.label :nova_data_de_criacao, "Nova data de criação" %><br>
+      <%= form.date_field :nova_data_de_criacao %>
+      <p style="font-size: 0.8rem; color: gray;">(Deixe vazio se não quiser alterar)</p>
+    </div>
+  <% end %>
+
 
 
   <div>

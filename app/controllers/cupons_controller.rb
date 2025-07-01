@@ -55,8 +55,14 @@ class CuponsController < ApplicationController
   def update
     respond_to do |format|
       if @cupon.update(cupon_params)
+        nova_data = params[:cupon][:nova_data_de_criacao]
+        if nova_data.present?
+          @cupon.update_column(:created_at, Date.parse(nova_data).beginning_of_day)
+        end
+
         format.html { redirect_to @cupon, notice: "Cupon was successfully updated." }
         format.json { render :show, status: :ok, location: @cupon }
+        
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @cupon.errors, status: :unprocessable_entity }
@@ -82,6 +88,6 @@ class CuponsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cupon_params
-      params.require(:cupon).permit(:description, :url_image, :code_id, :validade)
+      params.require(:cupon).permit(:description, :url_image, :code_id, :validade, :nova_data_de_criacao)
     end
 end
